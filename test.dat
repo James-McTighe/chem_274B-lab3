@@ -1,0 +1,2 @@
+Data to write to the file, which can easily include any Python datatype
+by using string formatting techniques.
