@@ -15,9 +15,14 @@ FROM flights
 JOIN iata
 on flights.destinationCode = iata.iata;
 
-UPDATE
-myTable AS m
-SET
-destinationCode='Charlotte'
-WHERE
-destinationCode='CLT';
+
+
+ALTER TABLE myTable
+ADD city TEXT;
+
+UPDATE myTable
+SET city = (
+    SELECT city
+    FROM iata AS i
+    WHERE myTable.destinationCode = i.iata
+)
